@@ -104,13 +104,13 @@ export class NavHeader extends PureComponent<NavHeaderProps> {
                 let intent: Intent | undefined;
                 // pre-release versions are not served as the default docs, they are inside the /versions/ folder
                 if (useNextVersion) {
-                    const isLatestStableMajor = +major(v) === +major(currentVersion) - 1;
+                    const isLatestStableMajor = major(v) === major(version);
                     href = isLatestStableMajor ? "/docs" : `/docs/versions/${major(v)}`;
                     if (isLatestStableMajor) {
                         intent = "primary";
                     }
                 } else {
-                    href = v === currentVersion ? "/docs" : `/docs/versions/${major(v)}`;
+                    href = v === version ? "/docs" : `/docs/versions/${major(v)}`;
                 }
                 return <MenuItem href={href} intent={intent} key={v} text={v} />;
             });
